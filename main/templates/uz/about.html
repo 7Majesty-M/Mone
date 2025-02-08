@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+{% block main %}
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Yuklanmoqda...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Page Header End -->
+        <div class="container-xxl py-5 page-header position-relative mb-5">
+            <div class="container py-5">
+                <h1 class="display-2 text-white animated slideInDown mb-4">Biz haqimizda</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Bosh sahifa</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Biz haqimizda</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+
+      <!-- Chap kolonna bilan matn -->
+      <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+        <h1 class="mb-4 text-orange-700 font-bold text-4xl">Bizning ishlarimiz va madaniy tadbirlarimiz haqida ko'proq bilib oling</h1>
+        <p class="text-gray-600 text-lg">
+          Biz har bir bola faqat o'rganish bilan cheklanib qolmasdan, jarayonni zavq bilan o'tkazishi uchun qiziqarli tadbirlar o'tkazamiz.
+          Bizda bolalar ijodiy qobiliyatlarini rivojlantiradigan rasmlar chizish, loydan haykallar yasash kabi ijodiy ustaxonalar bo'lib o'tadi.
+        </p>
+        <p class="text-gray-600 text-lg mb-4">
+          Jismoniy tarbiya tadbirlari, shu jumladan jamoaviy o'yinlar, estafeta va quvnoq boshlanishlar bolalarga jismoniy shaklni yaxshilash, chaqqonlikni rivojlantirish va jamoada ishlashni o'rgatadi.
+          Shuningdek, biz bolalarga atrofdagi dunyo haqida ko'p qiziqarli narsalarni o'rgatadigan ekskursiyalar o'tkazamiz.
+        </p>
+        <p class="text-gray-600 text-lg">
+          Bizning maqsadimiz - bolalar o'zlarini qulay va ishonchli his qiladigan do'stona muhit yaratish. Bizning tadbirlarimizda bolalar o'z fikrlarini ifodalash, bir-birlarini hurmat qilish va o'zaro hamkorlikni o'rganadilar.
+          Bularning barchasi ularning salohiyatini ochib berishga, rahbarlik qobiliyatlarini rivojlantirishga va muhim hayotiy ko'nikmalarni egallashga yordam beradi.
+        </p>
+        <p class="text-gray-600 text-lg">
+          Har bir bola noyobdir, va biz har bir bola o'ziga mos faoliyatni topishi uchun keng tanlov taklif qilishga harakat qilamiz.
+          Bu nafaqat tinch va ma'rifatli darslar, balki kulgili va hayajonli tadbirlardan iborat bo'lishi mumkin.
+          Bizning o'qituvchilarimiz har doim bolalarni ularning boshlagan ishlarida qo'llab-quvvatlash va ilhomlantirish uchun yonlarida bo'lishadi.
+        </p>
+      </div>
+
+      <!-- O'ng kolonna bilan rasmlar -->
+      <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+          <!-- Asosiy rasm -->
+          <div class="col-12 text-center">
+            <img class="img-fluid w-75 rounded-circle bg-light p-3 shadow-lg" src="{% static 'img/about-1.jpg' %}" alt="Asosiy tadbir">
+          </div>
+          <!-- Yuqori chapdo'k -->
+          <div class="col-6 text-start" style="margin-top: -150px;">
+            <img class="img-fluid w-100 rounded-circle bg-light p-3 shadow-md" src="{% static 'img/about-2.jpg' %}" alt="Madaniy mashg'ulot">
+          </div>
+          <!-- Yuqori o'ngdo'k -->
+          <div class="col-6 text-end" style="margin-top: -150px;">
+            <img class="img-fluid w-100 rounded-circle bg-light p-3 shadow-md" src="{% static 'img/about-3.jpg' %}" alt="Bolalar ijodi">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+</body>
+{% endblock %}
+</html>

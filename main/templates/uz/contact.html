@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Yuklanmoqda...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Page Header End -->
+        <div class="container-xxl py-5 page-header position-relative mb-5">
+            <div class="container py-5">
+                <h1 class="display-2 text-white animated slideInDown mb-4">Aloqalar</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Asosiy sahifa</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Aloqalar</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+
+        <!-- Contact Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3">Biz bilan bog'laning</h1>
+                    <p>Bizning bog'cha sahifamizga xush kelibsiz! Agar sizda savollar bo'lsa yoki farzandingizni yozib qo'ymoqchi bo'lsangiz, iltimos, quyidagi aloqa kanallaridan birini tanlab biz bilan bog'laning. Biz har doim yordam berishga tayyormiz!</p>
+                </div>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6 col-lg-4 text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 75px; height: 75px;">
+                            <i class="fa fa-map-marker-alt fa-2x text-primary"></i>
+                        </div>
+                        <h6>Toshkent, Dostoevskiy 53</h6>
+                    </div>
+<!--                    <div class="col-md-6 col-lg-4 text-center wow fadeInUp" data-wow-delay="0.3s">-->
+<!--                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 75px; height: 75px;">-->
+<!--                            <i class="fa fa-envelope-open fa-2x text-primary"></i>-->
+<!--                        </div>-->
+<!--                        <h6>info@example.com</h6>-->
+<!--                    </div>-->
+<!--                    <div class="col-md-6 col-lg-4 text-center wow fadeInUp" data-wow-delay="0.5s">-->
+<!--                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 75px; height: 75px;">-->
+<!--                            <i class="fa fa-phone-alt fa-2x text-primary"></i>-->
+<!--                        </div>-->
+<!--                        <h6>+012 345 6789</h6>-->
+<!--                    </div>-->
+                </div>
+                <div class="bg-light rounded">
+                    <div class="row g-0">
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                            <div class="h-100 d-flex flex-column justify-content-center p-5">
+                                <p>Agar sizda yozilish, ta'lim dasturi yoki bog'chamizning boshqa jihatlari haqida savollar bo'lsa, iltimos, biz bilan bog'laning. Biz har qanday so'rovlaringizga yordam berishga tayyormiz.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                            <div class="position-relative h-100">
+                                <iframe class="rounded w-100 h-100"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2687499.5436427755!2d69.29839!3d41.32345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDEuMzIzNDUgNjkuMjk4Mzk%3D!5e0!3m2!1sen!2sus!4v1631311690912!5m2!1sen!2sus"
+        frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+</body>
+
+{% endblock %}

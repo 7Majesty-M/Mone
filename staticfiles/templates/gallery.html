@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+</head>
+
+<body class="font-sans bg-gradient-to-b from-orange-100 to-orange-200">
+
+  <div class="min-h-screen flex flex-col items-center py-12 px-4">
+
+    <!-- Заголовок -->
+    <div class="text-center mb-12">
+      <h2 class="text-orange-800 text-5xl font-extrabold mb-4">Галерея Детского Сада</h2>
+      <p class="text-gray-700 text-lg">
+        Посмотрите фотографии и видеоролики из нашей жизни!
+      </p>
+    </div>
+
+    <!-- Фильтрация по категориям -->
+    <div class="mb-8">
+      <select id="categoryFilter" class="bg-orange-600 text-white px-6 py-2 rounded-full hover:bg-orange-700 transition duration-300">
+        <option value="">Все категории</option>
+        {% for category in categories %}
+          <option value="{{ category.id }}" {% if category.id == selected_category %}selected{% endif %}>
+            {{ category.name }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Кнопки фильтрации -->
+    <div class="mb-8 flex space-x-4">
+      <button class="bg-orange-600 text-white px-6 py-2 rounded-full hover:bg-orange-700 transition duration-300" id="filterImages">Фотографии</button>
+      <button class="bg-orange-600 text-white px-6 py-2 rounded-full hover:bg-orange-700 transition duration-300" id="filterVideos">Видео</button>
+      <button class="bg-orange-600 text-white px-6 py-2 rounded-full hover:bg-orange-700 transition duration-300" id="filterAll">Фото и Видео</button>
+    </div>
+
+    <!-- Секции галереи -->
+    <div class="max-w-6xl w-full">
+
+      <!-- Секция изображений -->
+      <div class="mb-12" id="imagesSection" {% if selected_filter != 'images' and selected_filter != 'all' %}style="display:none;"{% endif %}>
+        <h3 class="text-orange-700 text-3xl font-bold mb-6">Фотографии</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {% for media in media %}
+            {% if media.media_type == 'image' %}
+              <div class="group relative overflow-hidden rounded-3xl shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+                <a href="{{ media.image.url }}" data-fancybox="images-gallery" data-caption="{{ media.title }}">
+                  <img src="{{ media.image.url }}" alt="{{ media.title }}" class="w-full h-72 object-cover rounded-3xl group-hover:opacity-90 transition-opacity duration-300">
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Секция видео -->
+      <div class="mb-12" id="videosSection" {% if selected_filter != 'videos' and selected_filter != 'all' %}style="display:none;"{% endif %}>
+        <h3 class="text-orange-700 text-3xl font-bold mb-6">Видео</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {% for media in media %}
+            {% if media.media_type == 'video' %}
+              <div class="relative rounded-3xl overflow-hidden shadow-lg">
+                <a href="{{ media.video.url }}" data-fancybox="videos-gallery" data-caption="{{ media.title }}">
+                  <video class="w-full h-72 object-cover rounded-3xl">
+                    <source src="{{ media.video.url }}" type="video/quicktime">
+                    Ваш браузер не поддерживает видео.
+                  </video>
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Секция фото и видео вместе -->
+      <div class="mb-12" id="combinedSection" {% if selected_filter == 'all' %}style="display:block;"{% else %}style="display:none;"{% endif %}>
+        <h3 class="text-orange-700 text-3xl font-bold mb-6">Фото и Видео</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {% for media in media %}
+            {% if media.media_type == 'image' %}
+              <div class="group relative overflow-hidden rounded-3xl shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+                <a href="{{ media.image.url }}" data-fancybox="combined-gallery" data-caption="{{ media.title }}">
+                  <img src="{{ media.image.url }}" alt="{{ media.title }}" class="w-full h-72 object-cover rounded-3xl group-hover:opacity-90 transition-opacity duration-300">
+                </a>
+              </div>
+            {% endif %}
+            {% if media.media_type == 'video' %}
+              <div class="relative rounded-3xl overflow-hidden shadow-lg">
+                <a href="{{ media.video.url }}" data-fancybox="combined-gallery" data-caption="{{ media.title }}">
+                  <video class="w-full h-72 object-cover rounded-3xl">
+                    <source src="{{ media.video.url }}" type="video/quicktime">
+                    Ваш браузер не поддерживает видео.
+                  </video>
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+<script>
+  // Функция для фильтрации по категориям
+  const categoryFilter = document.getElementById('categoryFilter');
+  categoryFilter.addEventListener('change', function() {
+    const categoryId = this.value;
+    if (categoryId === "") {
+      imagesSection.style.display = 'none';
+      videosSection.style.display = 'none';
+      combinedSection.style.display = 'block';
+      window.location.href = '/gallery/';
+    } else {
+      window.location.href = `?category=${categoryId}`;
+    }
+  });
+
+  const filterImagesButton = document.getElementById('filterImages');
+  const filterVideosButton = document.getElementById('filterVideos');
+  const filterAllButton = document.getElementById('filterAll');
+  const imagesSection = document.getElementById('imagesSection');
+  const videosSection = document.getElementById('videosSection');
+  const combinedSection = document.getElementById('combinedSection');
+
+  // Показать только соответствующую секцию
+  filterImagesButton.addEventListener('click', () => {
+    imagesSection.style.display = 'block';
+    videosSection.style.display = 'none';
+    combinedSection.style.display = 'none';
+  });
+
+  filterVideosButton.addEventListener('click', () => {
+    imagesSection.style.display = 'none';
+    videosSection.style.display = 'block';
+    combinedSection.style.display = 'none';
+  });
+
+  filterAllButton.addEventListener('click', () => {
+    imagesSection.style.display = 'none';
+    videosSection.style.display = 'none';
+    combinedSection.style.display = 'block';
+  });
+
+  // Установим по умолчанию раздел "Фото и Видео", если нет выбранного фильтра
+  document.addEventListener('DOMContentLoaded', () => {
+    const selectedFilter = "{{ selected_filter }}"; // Получаем фильтр из контекста Django
+
+    if (selectedFilter === 'images') {
+      imagesSection.style.display = 'block';
+      videosSection.style.display = 'none';
+      combinedSection.style.display = 'none';
+    } else if (selectedFilter === 'videos') {
+      imagesSection.style.display = 'none';
+      videosSection.style.display = 'block';
+      combinedSection.style.display = 'none';
+    } else {
+      // По умолчанию показываем раздел "Фото и Видео"
+      imagesSection.style.display = 'none';
+      videosSection.style.display = 'none';
+      combinedSection.style.display = 'block';
+    }
+  });
+
+  Fancybox.bind("[data-fancybox]", {
+  infinite: true,
+  Thumbs: {
+    autoStart: true,
+  },
+  // Дополнительно указать типы видео
+  Video: {
+    types: ["mp4", "mov", "webm", "avi"], // Добавляем mov
+  }
+});
+
+</script>
+</body>
+</html>

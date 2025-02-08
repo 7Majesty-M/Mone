@@ -1,0 +1,90 @@
+{% load static %}
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-[sans-serif] bg-gradient-to-b from-orange-100 to-orange-200">
+  <div class="min-h-screen flex items-center justify-center py-6 px-4 bg-gradient-to-b from-orange-100 to-orange-200">
+    <div class="max-w-6xl w-full grid md:grid-cols-2 gap-6">
+      <!-- Kirish shakli -->
+      <div class="border border-gray-300 rounded-lg p-6 max-w-md shadow-lg max-md:mx-auto bg-white">
+        <form method="POST" action="{% url 'login' %}" class="space-y-4">
+          {% csrf_token %}
+          <div class="mb-8">
+            <h3 class="text-orange-800 text-3xl font-extrabold text-center">Kirish</h3>
+            <p class="text-gray-500 text-sm mt-4 leading-relaxed text-center">
+              Hisobingizga kiring va shaxsiy xizmatlardan foydalaning.
+            </p>
+          </div>
+
+          <!-- Email maydoni -->
+          <div>
+            <label for="username" class="text-gray-800 text-sm mb-2 block">Email</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              value="{{ form.username.value|default_if_none:'' }}"
+              class="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Email kiriting"
+            />
+            {% if form.username.errors %}
+              <p class="text-red-500 text-sm mt-2">{{ form.username.errors }}</p>
+            {% endif %}
+          </div>
+
+          <!-- Parol maydoni -->
+          <div>
+            <label for="password" class="text-gray-800 text-sm mb-2 block">Parol</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Parol kiriting"
+            />
+            {% if form.password.errors %}
+              <p class="text-red-500 text-sm mt-2">{{ form.password.errors }}</p>
+            {% endif %}
+          </div>
+
+          <!-- Jo'natish tugmasi -->
+          <div class="!mt-8">
+            <button
+              type="submit"
+              class="w-full shadow-xl py-2.5 px-4 text-sm tracking-wide rounded-lg text-white bg-orange-500 hover:bg-orange-600 focus:outline-none"
+            >
+              Kirish
+            </button>
+          </div>
+
+          <p class="text-sm !mt-8 text-center text-gray-500">
+            Hisobingiz yo‘qmi?
+            <a
+              href="{% url 'register' %}"
+              class="text-orange-600 font-semibold hover:underline ml-1 whitespace-nowrap"
+            >
+              Ro‘yxatdan o‘ting
+            </a>
+          </p>
+        </form>
+
+        <p class="text-sm text-center text-gray-500">
+          Parolni unutdingizmi?
+          <a href="{% url 'request_password_reset' %}" class="text-orange-600 font-semibold hover:underline">
+            Uni tiklang
+          </a>
+        </p>
+
+      </div>
+      <!-- Illyustratsiya -->
+      <div class="max-md:mt-8">
+        <img
+          src="{% static 'img/image_login.png' %}"
+          class="w-full aspect-[71/50] max-md:w-4/5 mx-auto block object-cover"
+          alt="Kirish jarayoni"
+        />
+      </div>
+    </div>
+  </div>
+</body>

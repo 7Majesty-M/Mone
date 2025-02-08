@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% block main %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<style>
+.menu-container {
+    width: 90%;
+    margin: 40px auto;
+    padding: 40px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(145deg, #fff, #f6f6f6);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.menu-title {
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(to right, #FE5D37, #FF8C42);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card {
+    background: linear-gradient(to bottom, #ffffff, #fdf7f3);
+    border: 1px solid #e6e0da;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.menu-card-title {
+    font-size: 32px;
+    font-weight: bold;
+    font-style: italic;
+    color: #FF8C42;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.menu-items {
+    font-size: 20px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.menu-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fffaf5;
+    border: 1px solid #eee6df;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.menu-item:hover {
+    background: #fff0e5;
+    transform: scale(1.02);
+}
+
+.menu-item-title {
+    font-weight: bold;
+    color: #FE5D37;
+    font-size: 16px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-item-title i {
+    margin-right: 8px;
+    color: #FF8C42;
+    font-size: 20px;
+}
+
+.menu-item p {
+    margin: 0;
+    color: #444;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .menu-title {
+        font-size: 32px;
+    }
+    .menu-card-title {
+        font-size: 22px;
+    }
+    .menu-items {
+        font-size: 14px;
+    }
+    .menu-container {
+        width: 90%;
+        margin: 40px auto;
+        padding: 0;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        background: linear-gradient(145deg, #fff, #f6f6f6);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+}
+</style>
+<div class="menu-container">
+    <h1 class="menu-title">Menyu</h1>
+    <div class="menu-cards">
+        {% for menu in menus %}
+        <div class="menu-card">
+            <h2 class="menu-card-title">Menyu {{ menu.date }} kuni</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <span class="menu-item-title">
+                        <i class="fas fa-egg"></i> Nonushta:
+                    </span>
+                    <p>{{ menu.breakfast }}</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-item-title">
+                        <i class="fas fa-coffee"></i> Ikkinchi nonushta:
+                    </span>
+                    <p>{{ menu.second_breakfast }}</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-item-title">
+                        <i class="fas fa-utensils"></i> Tushlik:
+                    </span>
+                    <p>{{ menu.lunch }}</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-item-title">
+                        <i class="fas fa-ice-cream"></i> Kechki ovqat:
+                    </span>
+                    <p>{{ menu.afternoon_snack }}</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-item-title">
+                        <i class="fas fa-pizza-slice"></i> Kechki ovqat:
+                    </span>
+                    <p>{{ menu.dinner }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

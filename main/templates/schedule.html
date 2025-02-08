@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% block main %}
+<style>
+  /* Стиль для таблицы */
+  .schedule {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    table-layout: fixed; /* Обеспечивает равномерное распределение ширины колонок */
+  }
+
+  /* Стиль для заголовков таблицы */
+  .schedule th {
+    background-color: #FE5D37;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  /* Стиль для ячеек таблицы */
+  .schedule td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    word-wrap: break-word; /* Переносит длинные слова на новую строку */
+  }
+
+  /* Цвет фона для четных строк */
+  .schedule tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  /* Цвет фона для строк при наведении */
+  .schedule tr:hover {
+    background-color: #ddd;
+  }
+
+  /* Стиль для первой колонки (время) */
+  .schedule td:first-child {
+    font-weight: bold;
+    background-color: #f4f4f4;
+  }
+
+  /* Адаптивность для мобильных устройств */
+  @media (max-width: 768px) {
+    .schedule td, .schedule th {
+      padding: 8px;
+      font-size: 12px;
+    }
+
+    /* Сделать таблицу вертикальной на маленьких экранах */
+    .schedule thead {
+      display: none; /* Скрываем заголовки на мобильных */
+    }
+
+    .schedule tr {
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .schedule td {
+      display: block;
+      text-align: left;
+      padding-left: 50%; /* Отступ для меток */
+      position: relative;
+    }
+
+    .schedule td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    /* Убираем разделители на мобильных */
+    .schedule td:first-child {
+      background-color: transparent;
+      font-weight: normal;
+    }
+  }
+</style>
+
+<header>
+  <h1 style="text-align: center; color: #FE5D37;">Режим Дня</h1>
+</header>
+<main>
+  <table class="schedule">
+    <thead>
+      <tr>
+        <th>Время</th>
+        <th>Понедельник</th>
+        <th>Вторник</th>
+        <th>Среда</th>
+        <th>Четверг</th>
+        <th>Пятница</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Время">08:00 - 09:00</td>
+        <td data-label="Понедельник">Завтрак</td>
+        <td data-label="Вторник">Завтрак</td>
+        <td data-label="Среда">Завтрак</td>
+        <td data-label="Четверг">Завтрак</td>
+        <td data-label="Пятница">Завтрак</td>
+      </tr>
+      <tr>
+        <td data-label="Время">09:00 - 10:00</td>
+        <td data-label="Понедельник">Развивающие игры</td>
+        <td data-label="Вторник">Творчество</td>
+        <td data-label="Среда">Спортивные игры</td>
+        <td data-label="Четверг">Развивающие игры</td>
+        <td data-label="Пятница">Творчество</td>
+      </tr>
+      <tr>
+        <td data-label="Время">10:00 - 11:00</td>
+        <td data-label="Понедельник">Прогулка на улице</td>
+        <td data-label="Вторник">Прогулка на улице</td>
+        <td data-label="Среда">Прогулка на улице</td>
+        <td data-label="Четверг">Прогулка на улице</td>
+        <td data-label="Пятница">Прогулка на улице</td>
+      </tr>
+      <tr>
+        <td data-label="Время">11:00 - 12:00</td>
+        <td data-label="Понедельник">Чтение книг</td>
+        <td data-label="Вторник">Чтение книг</td>
+        <td data-label="Среда">Чтение книг</td>
+        <td data-label="Четверг">Чтение книг</td>
+        <td data-label="Пятница">Чтение книг</td>
+      </tr>
+      <tr>
+        <td data-label="Время">12:00 - 13:00</td>
+        <td data-label="Понедельник">Обед</td>
+        <td data-label="Вторник">Обед</td>
+        <td data-label="Среда">Обед</td>
+        <td data-label="Четверг">Обед</td>
+        <td data-label="Пятница">Обед</td>
+      </tr>
+      <tr>
+        <td data-label="Время">13:00 - 15:00</td>
+        <td data-label="Понедельник">Тихий час</td>
+        <td data-label="Вторник">Тихий час</td>
+        <td data-label="Среда">Тихий час</td>
+        <td data-label="Четверг">Тихий час</td>
+        <td data-label="Пятница">Тихий час</td>
+      </tr>
+      <tr>
+        <td data-label="Время">15:00 - 16:00</td>
+        <td data-label="Понедельник">Полдник</td>
+        <td data-label="Вторник">Полдник</td>
+        <td data-label="Среда">Полдник</td>
+        <td data-label="Четверг">Полдник</td>
+        <td data-label="Пятница">Полдник</td>
+      </tr>
+      <tr>
+        <td data-label="Время">16:00 - 17:00</td>
+        <td data-label="Понедельник">Игры на свежем воздухе</td>
+        <td data-label="Вторник">Игры на свежем воздухе</td>
+        <td data-label="Среда">Игры на свежем воздухе</td>
+        <td data-label="Четверг">Игры на свежем воздухе</td>
+        <td data-label="Пятница">Игры на свежем воздухе</td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+{% endblock %}

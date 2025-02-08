@@ -1,0 +1,143 @@
+{% load static %}
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-[sans-serif] bg-gradient-to-b from-orange-100 to-orange-200">
+  <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
+    <div class="grid md:grid-cols-2 items-center gap-6 max-w-6xl w-full">
+      <div class="border border-gray-300 rounded-lg p-6 max-w-md shadow-lg max-md:mx-auto bg-white">
+        <form class="space-y-4" method="POST" action="{% url 'register' %}">
+          {% csrf_token %}
+          <div class="mb-8">
+            <h3 class="text-orange-800 text-3xl font-extrabold text-center">Ro'yxatdan o'tish</h3>
+            <p class="text-gray-500 text-sm mt-4 leading-relaxed text-center">
+              Barcha funksiyalarga kirish uchun akkaunt yarating. Boshlaymiz!
+            </p>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="text-gray-800 text-sm mb-2 block">Elektron pochta</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value="{{ form.email.value|default_if_none:'' }}"
+              class="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Emailingizni kiriting"
+            />
+            {% if form.email.errors %}
+              <p class="text-red-500 text-sm mt-2">{{ form.email.errors }}</p>
+            {% endif %}
+          </div>
+
+          <!-- First Name -->
+          <div>
+            <label class="text-gray-800 text-sm mb-2 block">Ism</label>
+            <input
+              type="text"
+              name="first_name"
+              id="first_name"
+              value="{{ form.first_name.value|default_if_none:'' }}"
+              class="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Ismingizni kiriting"
+            />
+            {% if form.first_name.errors %}
+              <p class="text-red-500 text-sm mt-2">{{ form.first_name.errors }}</p>
+            {% endif %}
+          </div>
+
+          <!-- Last Name -->
+          <div>
+            <label class="text-gray-800 text-sm mb-2 block">Familiya</label>
+            <input
+              type="text"
+              name="last_name"
+              id="last_name"
+              value="{{ form.last_name.value|default_if_none:'' }}"
+              class="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Familiyangizni kiriting"
+            />
+            {% if form.last_name.errors %}
+              <p class="text-red-500 text-sm mt-2">{{ form.last_name.errors }}</p>
+            {% endif %}
+          </div>
+
+          <!-- Mobile -->
+          <div>
+            <label class="text-gray-800 text-sm mb-2 block">Telefon</label>
+            <input
+              type="text"
+              name="mobile"
+              id="mobile"
+              value="{{ form.mobile.value|default_if_none:'' }}"
+              class="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Telefon raqamingizni kiriting"
+            />
+            {% if form.mobile.errors %}
+              <p class="text-red-500 text-sm mt-2">{{ form.mobile.errors }}</p>
+            {% endif %}
+          </div>
+
+          <!-- Password -->
+          <div>
+            <label class="text-gray-800 text-sm mb-2 block">Parol</label>
+            <input
+              type="password"
+              name="password1"
+              id="password1"
+              class="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Parolingizni kiriting"
+            />
+            {% if form.password1.errors %}
+              <p class="text-red-500 text-sm mt-2">{{ form.password1.errors }}</p>
+            {% endif %}
+          </div>
+
+          <!-- Confirm Password -->
+          <div>
+            <label class="text-gray-800 text-sm mb-2 block">Parolni tasdiqlang</label>
+            <input
+              type="password"
+              name="password2"
+              id="password2"
+              class="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Parolni qayta kiriting"
+            />
+            {% if form.password2.errors %}
+              <p class="text-red-500 text-sm mt-2">{{ form.password2.errors }}</p>
+            {% endif %}
+          </div>
+
+          <!-- Submit Button -->
+          <div class="!mt-8">
+            <button
+              type="submit"
+              class="w-full shadow-xl py-2.5 px-4 text-sm tracking-wide rounded-lg text-white bg-orange-500 hover:bg-orange-600 focus:outline-none"
+            >
+              Ro'yxatdan o'tish
+            </button>
+          </div>
+
+          <p class="text-sm !mt-8 text-center text-gray-500">
+            Allaqachon akkauntingiz bormi?
+            <a
+              href="{% url 'login' %}"
+              class="text-orange-600 font-semibold hover:underline ml-1 whitespace-nowrap"
+            >
+              Kirish
+            </a>
+          </p>
+        </form>
+      </div>
+      <div class="max-md:mt-8">
+        <img
+          src="{% static 'img/image_login.png' %}"
+          class="w-full aspect-[71/50] max-md:w-4/5 mx-auto block object-cover"
+          alt="Ro'yxatdan o'tish jarayoni"
+        />
+      </div>
+    </div>
+  </div>
+</body>

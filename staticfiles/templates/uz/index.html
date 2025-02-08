@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block main %}
+<style>
+            .custom-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .custom-message.success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .custom-message.error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .custom-message.fade-out {
+    opacity: 0;
+            display: none;
+}
+</style>
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+{% if messages %}
+    {% for message in messages %}
+        <div class="custom-message {% if message.tags %}{{ message.tags }}{% endif %}" id="message-{{ forloop.counter }}">
+            {{ message }}
+        </div>
+
+        <script>
+            setTimeout(function() {
+                var message = document.getElementById("message-{{ forloop.counter }}");
+                if (message) {
+                    message.classList.add("fade-out");
+                }
+            }, 7000);
+        </script>
+    {% endfor %}
+{% endif %}
+
+
+        <!-- Carousel Start -->
+        <div class="container-fluid p-0 mb-5">
+    <div class="owl-carousel header-carousel position-relative">
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="{% static 'img/carousel-1.jpg' %}" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-10 col-lg-8">
+                            <h1 class="display-2 text-white animated slideInDown mb-4">Bolalaringiz uchun eng yaxshi bog'cha</h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">Biz har bir bola uchun xavfsiz va rivojlantiruvchi muhitni taqdim etamiz. Bizda bolalar nafaqat yangi narsalarni o'rganadilar, balki ijodiy qobiliyatlarini rivojlantiradilar.</p>
+                            <a href="{% url 'contact' %}" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Batafsil ma'lumot</a>
+                            <a href="{% url 'classes' %}" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Bizning to'garaklarimiz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="{% static 'img/carousel-2.jpg' %}" alt="">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-10 col-lg-8">
+                            <h1 class="display-2 text-white animated slideInDown mb-4">Bolalaringiz uchun yorqin kelajak yarating</h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">Biz sizning farzandingizni barcha tomonlama rivojlantirishga yordam beradigan noyob dastur taqdim etamiz: mantiqiy fikrlashdan tortib, ijodiy o'z ifodasigacha.</p>
+                            <a href="{% url 'contact' %}" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Batafsil ma'lumot</a>
+                            <a href="{% url 'classes' %}" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Bizning to'garaklarimiz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Carousel End -->
+
+        <!-- Facilities Start -->
+        <div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Bizning Imkoniyatlarimiz</h1>
+            <p>Biz o'quvchilarimiz uchun o'rganish va rivojlanish uchun qulay va xavfsiz muhit yaratmoqdamiz. Bizning imkoniyatlarimiz bolalarga o'sish va baxtli bo'lish uchun zarur bo'lgan barcha narsalarni taqdim etadi.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="facility-item">
+                    <div class="facility-icon bg-primary">
+                        <span class="bg-primary"></span>
+                        <i class="fa fa-book fa-3x text-primary"></i>
+                        <span class="bg-primary"></span>
+                    </div>
+                    <div class="facility-text bg-primary">
+                        <h3 class="text-primary mb-3">O'qish Burchagi</h3>
+                        <p class="mb-0">Biz bolalarga o'qish va bilimlarga bo'lgan muhabbatni rivojlantirish uchun qiziqarli va rivojlantiruvchi kitoblar taqdim etamiz.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="facility-item">
+                    <div class="facility-icon bg-success">
+                        <span class="bg-success"></span>
+                        <i class="fa fa-futbol fa-3x text-success"></i>
+                        <span class="bg-success"></span>
+                    </div>
+                    <div class="facility-text bg-success">
+                        <h3 class="text-success mb-3">O'yin Maydoni</h3>
+                        <p class="mb-0">Bizda bolalar ochiq havoda vaqtlarini zavqli o'tkazishlari uchun keng va xavfsiz o'yin maydoni mavjud.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="facility-item">
+                    <div class="facility-icon bg-warning">
+                        <span class="bg-warning"></span>
+                        <i class="fa fa-home fa-3x text-warning"></i>
+                        <span class="bg-warning"></span>
+                    </div>
+                    <div class="facility-text bg-warning">
+                        <h3 class="text-warning mb-3">Sog'lom Oshxona</h3>
+                        <p class="mb-0">Biz bolalar uchun sog'lom va foydali menyu taklif etamiz, bu ular sog'lom va energiyaga to'la bo'lib o'sishlariga yordam beradi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="facility-item">
+                    <div class="facility-icon bg-info">
+                        <span class="bg-info"></span>
+                        <i class="fa fa-chalkboard-teacher fa-3x text-info"></i>
+                        <span class="bg-info"></span>
+                    </div>
+                    <div class="facility-text bg-info">
+                        <h3 class="text-info mb-3">Ijobiy O'qitish</h3>
+                        <p class="mb-0">Biz har bir bola o'zini ishonchli va baxtli his qiladigan, shuningdek, o'z talantlarini rivojlantiradigan muhitni yaratamiz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Facilities End -->
+
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-4">Bizning faoliyatimiz va madaniy tadbirlarimiz haqida ko'proq bilib oling</h1>
+                <p>Biz bolalarning rivojlanishini va ijtimoiy o'zaro aloqalarini yaxshilashga qaratilgan turli madaniy tadbirlar tashkil etamiz. Bizning tadbirlarimizga ijodiy master-klasslar, sport musobaqalari, ekskursiyalar va bolalarning qiziqarli tarzda rivojlanishiga yordam beradigan boshqa ko'plab faoliyatlar kiradi.</p>
+                <p class="mb-4">Biz har bir bola o'z potentsialini ochib, jamoada ishlashni va muhim hayotiy ko'nikmalarni rivojlantirishni o'rganishi uchun atmosferani yaratishga intilamiz. Bizning madaniy va ta'limiy tadbirlarimiz bolalarga nafaqat o'rganishga, balki jarayondan zavqlanishga ham yordam beradi.</p>
+                <p class="mb-4">Bizning maqsadimiz — bolalar o'zlarini qulay va ishonchli his qilishlari uchun do'stona muhit yaratish. Bizning tadbirlarimizda bolalar bir-birlari bilan o'zaro aloqada bo'lishni, o'z fikrlarini ifodalashni va bir-birini hurmat qilishni o'rganadilar. Bularning barchasi ularning potentsialini ochishga, liderlik qobiliyatlarini rivojlantirishga va muhim hayotiy ko'nikmalarni olishga yordam beradi.</p>
+                <div class="row g-4 align-items-center">
+                    <div class="col-sm-6">
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="{% url 'about' %}">Davomini o'qish</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/about-1.jpg' %}" alt="">
+                    </div>
+                    <div class="col-6 text-start" style="margin-top: -150px;">
+                        <img class="img-fluid w-100 rounded-circle bg-light p-3" src="{% static 'img/about-2.jpg' %}" alt="">
+                    </div>
+                    <div class="col-6 text-end" style="margin-top: -150px;">
+                        <img class="img-fluid w-100 rounded-circle bg-light p-3" src="{% static 'img/about-3.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Appointment Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="bg-light rounded">
+            <div class="row g-0">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="h-100 d-flex flex-column justify-content-center p-5">
+                        <h1 class="mb-4">Uchrashuvni belgilash</h1>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        {{ form.parent_full_name }}
+                                        <label for="id_parent_full_name">Ota-Onaning Ismi</label>
+                                        {% if form.parent_full_name.errors %}
+                                            <div class="text-danger">
+                                                {% for error in form.parent_full_name.errors %}
+                                                    <p>{{ error }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        {{ form.phone_number }}
+                                        <label for="id_phone_number">Ota-Onaning Telefon Raqami (belgisi +siz)</label>
+                                        {% if form.phone_number.errors %}
+                                            <div class="text-danger">
+                                                {% for error in form.phone_number.errors %}
+                                                    <p>{{ error }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        {{ form.child_full_name }}
+                                        <label for="id_child_full_name">Bolaning Ismi</label>
+                                        {% if form.child_full_name.errors %}
+                                            <div class="text-danger">
+                                                {% for error in form.child_full_name.errors %}
+                                                    <p>{{ error }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        {{ form.child_birth_date }}
+                                        <label for="id_child_birth_date">Bolaning Yoshi</label>
+                                        {% if form.child_birth_date.errors %}
+                                            <div class="text-danger">
+                                                {% for error in form.child_birth_date.errors %}
+                                                    <p>{{ error }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        {{ form.message }}
+                                        <label for="id_message">Xabar</label>
+                                        {% if form.message.errors %}
+                                            <div class="text-danger">
+                                                {% for error in form.message.errors %}
+                                                    <p>{{ error }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Yuborish</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded" src="{% static 'img/appointment.jpg' %}" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+</body>
+{% endblock %}
+</html>

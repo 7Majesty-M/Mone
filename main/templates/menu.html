@@ -1,0 +1,430 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<!--<style>-->
+<!--    .menu-container {-->
+<!--        width: 80%;-->
+<!--        margin: 0 auto;-->
+<!--        padding: 40px 0;-->
+<!--    }-->
+
+<!--    .menu-title {-->
+<!--        font-size: 36px;-->
+<!--        font-weight: bold;-->
+<!--        color: #FE5D37;-->
+<!--        text-align: center;-->
+<!--        margin-bottom: 40px;-->
+<!--    }-->
+
+<!--    .menu-cards {-->
+<!--        display: grid;-->
+<!--        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));-->
+<!--        gap: 20px;-->
+<!--    }-->
+
+<!--    .menu-card {-->
+<!--        background-color: #fff;-->
+<!--        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);-->
+<!--        border-radius: 10px;-->
+<!--        overflow: hidden;-->
+<!--        transition: transform 0.3s ease;-->
+<!--    }-->
+
+<!--    .menu-card:hover {-->
+<!--        transform: scale(1.05);-->
+<!--    }-->
+
+<!--    .menu-card-content {-->
+<!--        padding: 20px;-->
+<!--    }-->
+
+<!--    .menu-card-title {-->
+<!--        font-size: 24px;-->
+<!--        font-weight: bold;-->
+<!--        color: #FE5D37;-->
+<!--        margin-bottom: 20px;-->
+<!--        text-align: center;-->
+<!--    }-->
+
+<!--    .menu-items {-->
+<!--        font-size: 16px;-->
+<!--        color: #555;-->
+<!--    }-->
+
+<!--    .menu-item-title {-->
+<!--        font-weight: bold;-->
+<!--        color: #FE5D37;-->
+<!--    }-->
+
+<!--    .menu-item {-->
+<!--        background-color: #f8f8f8;-->
+<!--        padding: 12px;-->
+<!--        margin-bottom: 10px;-->
+<!--        border-radius: 8px;-->
+<!--        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);-->
+<!--        transition: background-color 0.3s ease;-->
+<!--    }-->
+
+<!--    .menu-item:hover {-->
+<!--        background-color: #ffecdc;-->
+<!--    }-->
+
+<!--    .menu-item p {-->
+<!--        margin: 0;-->
+<!--    }-->
+
+<!--    .menu-item:after {-->
+<!--        content: "";-->
+<!--        display: block;-->
+<!--        margin-top: 10px;-->
+<!--        border-top: 1px solid #ddd;-->
+<!--    }-->
+
+<!--    /* Иконки для еды */-->
+<!--    .menu-item-icon {-->
+<!--        margin-right: 10px;-->
+<!--    }-->
+
+<!--    /* Адаптивные стили */-->
+<!--    @media (max-width: 768px) {-->
+<!--        .menu-title {-->
+<!--            font-size: 28px;-->
+<!--        }-->
+
+<!--        .menu-card-title {-->
+<!--            font-size: 20px;-->
+<!--        }-->
+
+<!--        .menu-item {-->
+<!--            padding: 10px;-->
+<!--        }-->
+
+<!--        .menu-cards {-->
+<!--            grid-template-columns: 1fr;-->
+<!--        }-->
+<!--    }-->
+<!--</style>-->
+
+<!--<div class="menu-container">-->
+<!--    <h1 class="menu-title">Меню для детского садика</h1>-->
+<!--    <div class="menu-cards">-->
+<!--        {% for menu in menus %}-->
+<!--        <div class="menu-card">-->
+<!--            <div class="menu-card-content">-->
+<!--                <h2 class="menu-card-title">Меню на {{ menu.date }}</h2>-->
+<!--                <div class="menu-items">-->
+<!--                    <div class="menu-item">-->
+<!--                        <p><span class="menu-item-title"><i class="menu-item-icon">&#x1F95E;</i>Завтрак:</span> {{ menu.breakfast }}</p>-->
+<!--                    </div>-->
+<!--                    <div class="menu-item">-->
+<!--                        <p><span class="menu-item-title"><i class="menu-item-icon">&#x1F374;</i>Ужин:</span> {{ menu.lunch }}</p>-->
+<!--                    </div>-->
+<!--                    <div class="menu-item">-->
+<!--                        <p><span class="menu-item-title"><i class="menu-item-icon">&#x1F36D;</i>Перекус:</span> {{ menu.snack }}</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<style>-->
+<!--    /* Контейнер меню */-->
+<!--    .menu-container {-->
+<!--        width: 80%;-->
+<!--        margin: 0 auto;-->
+<!--        padding: 40px 0;-->
+<!--    }-->
+
+<!--    /* Заголовок меню */-->
+<!--    .menu-title {-->
+<!--        font-size: 36px;-->
+<!--        font-weight: bold;-->
+<!--        color: #FE5D37;-->
+<!--        text-align: center;-->
+<!--        margin-bottom: 40px;-->
+<!--        text-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Легкая тень для заголовка */-->
+<!--    }-->
+
+<!--    /* Карточки меню */-->
+<!--    .menu-cards {-->
+<!--        display: grid;-->
+<!--        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));-->
+<!--        gap: 20px;-->
+<!--    }-->
+
+<!--    .menu-card {-->
+<!--        background-color: #fff;-->
+<!--        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);-->
+<!--        border-radius: 10px;-->
+<!--        overflow: hidden;-->
+<!--        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавное увеличение и тень */-->
+<!--        min-height: 300px;-->
+<!--    }-->
+
+<!--    .menu-card:hover {-->
+<!--        transform: scale(1.05);-->
+<!--        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Тень при наведении */-->
+<!--    }-->
+
+<!--    .menu-card-content {-->
+<!--        padding: 20px;-->
+<!--    }-->
+
+<!--    /* Заголовок карточки */-->
+<!--    .menu-card-title {-->
+<!--        font-size: 24px;-->
+<!--        font-weight: bold;-->
+<!--        color: #FE5D37;-->
+<!--        margin-bottom: 20px;-->
+<!--        text-align: center;-->
+<!--    }-->
+
+<!--    /* Содержимое меню */-->
+<!--    .menu-items {-->
+<!--        font-size: 16px;-->
+<!--        color: #555;-->
+<!--    }-->
+
+<!--    .menu-item-title {-->
+<!--        font-weight: bold;-->
+<!--        color: #FE5D37;-->
+<!--    }-->
+
+<!--    /* Стиль для отдельных элементов меню */-->
+<!--    .menu-item {-->
+<!--        background-color: #f8f8f8;-->
+<!--        padding: 12px;-->
+<!--        margin-bottom: 10px;-->
+<!--        border-radius: 8px;-->
+<!--        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);-->
+<!--        transition: background-color 0.3s ease, transform 0.3s ease;-->
+<!--    }-->
+
+<!--    /* Эффект при наведении на элемент меню */-->
+<!--    .menu-item:hover {-->
+<!--        background-color: #ffecdc;-->
+<!--        transform: translateY(-5px); /* Поднятие при наведении */-->
+<!--    }-->
+
+<!--    .menu-item p {-->
+<!--        margin: 0;-->
+<!--    }-->
+
+<!--    /* Добавление разделителей между элементами меню */-->
+<!--    .menu-item:after {-->
+<!--        content: "";-->
+<!--        display: block;-->
+<!--        margin-top: 10px;-->
+<!--        border-top: 1px solid #ddd;-->
+<!--    }-->
+
+<!--    /* Адаптивные стили */-->
+<!--    @media (max-width: 768px) {-->
+<!--        .menu-title {-->
+<!--            font-size: 28px;-->
+<!--        }-->
+
+<!--        .menu-card-title {-->
+<!--            font-size: 20px;-->
+<!--        }-->
+
+<!--        .menu-item {-->
+<!--            padding: 10px;-->
+<!--        }-->
+
+<!--        .menu-cards {-->
+<!--            grid-template-columns: 1fr;-->
+<!--        }-->
+<!--    }-->
+
+<!--    /* Градиент для заголовков */-->
+<!--    .gradient-text {-->
+<!--        background: linear-gradient(to right, #FE5D37, #FFA500);-->
+<!--        -webkit-background-clip: text;-->
+<!--        color: transparent;-->
+<!--    }-->
+<!--</style>-->
+
+<!--<div class="menu-container">-->
+<!--    <h1 class="menu-title gradient-text">Меню</h1>-->
+<!--    <div class="menu-cards">-->
+<!--        {% for menu in menus %}-->
+<!--        <div class="menu-card">-->
+<!--            <div class="menu-card-content">-->
+<!--                <h2 class="menu-card-title">Меню на {{ menu.date }}</h2>-->
+<!--                <div class="menu-items">-->
+<!--                    <div class="menu-item">-->
+<!--                        <p><span class="menu-item-title"><i class="menu-item-icon">&#x1F95E;</i>Завтрак:</span> {{ menu.breakfast }}</p>-->
+<!--                    </div>-->
+<!--                    <div class="menu-item">-->
+<!--                        <p><span class="menu-item-title"><i class="menu-item-icon">&#x1F374;</i>Ужин:</span> {{ menu.lunch }}</p>-->
+<!--                    </div>-->
+<!--                    <div class="menu-item">-->
+<!--                        <p><span class="menu-item-title"><i class="menu-item-icon">&#x1F36D;</i>Перекус:</span> {{ menu.snack }}</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+<!--</div>-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<style>
+.menu-container {
+    width: 90%;
+    margin: 40px auto;
+    padding: 40px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(145deg, #fff, #f6f6f6);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.menu-title {
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(to right, #FE5D37, #FF8C42);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card {
+    background: linear-gradient(to bottom, #ffffff, #fdf7f3);
+    border: 1px solid #e6e0da;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.menu-card-title {
+    font-size: 32px;
+    font-weight: bold;
+    font-style: italic;
+    color: #FF8C42;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.menu-items {
+    font-size: 20px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.menu-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fffaf5;
+    border: 1px solid #eee6df;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.menu-item:hover {
+    background: #fff0e5;
+    transform: scale(1.02);
+}
+
+.menu-item-title {
+    font-weight: bold;
+    color: #FE5D37;
+    font-size: 16px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-item-title i {
+    margin-right: 8px;
+    color: #FF8C42;
+    font-size: 20px;
+}
+
+.menu-item p {
+    margin: 0;
+    color: #444;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .menu-title {
+        font-size: 32px;
+    }
+    .menu-card-title {
+        font-size: 22px;
+    }
+    .menu-items {
+        font-size: 14px;
+    }
+    .menu-container {
+        width: 90%;
+        margin: 40px auto;
+        padding: 0;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        background: linear-gradient(145deg, #fff, #f6f6f6);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+}
+</style>
+<div class="menu-container">
+    <h1 class="menu-title">Меню</h1>
+    <div class="menu-cards">
+        {% for menu in menus %}
+        <div class="menu-card">
+            <h2 class="menu-card-title">Меню на {{ menu.date }}</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <span class="menu-item-title">
+                        <i class="fas fa-egg"></i> Завтрак:
+                    </span>
+                    <p>{{ menu.breakfast }}</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-item-title">
+                        <i class="fas fa-coffee"></i> Второй завтрак:
+                    </span>
+                    <p>{{ menu.second_breakfast }}</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-item-title">
+                        <i class="fas fa-utensils"></i> Обед:
+                    </span>
+                    <p>{{ menu.lunch }}</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-item-title">
+                        <i class="fas fa-ice-cream"></i> Полдник:
+                    </span>
+                    <p>{{ menu.afternoon_snack }}</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-item-title">
+                        <i class="fas fa-pizza-slice"></i> Ужин:
+                    </span>
+                    <p>{{ menu.dinner }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

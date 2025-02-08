@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+{% block main %}
+<style>
+    .classes-item .bg-light {
+        height: 250px; /* Blokning umumiy balandligi */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .classes-item h3 {
+        font-size: 20px;
+    }
+    .classes-item p {
+        font-size: 16px;
+    }
+    .classes-item img {
+    width: 280px; /* Doimiy kenglik */
+    height: 230px; /* Doimiy balandlik */
+    object-fit: cover; /* Rasm konteynerga moslashadi */
+    border-radius: 50%; /* Doira shaklini saqlaydi */
+}
+
+</style>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Yuklanmoqda...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Page Header End -->
+        <div class="container-xxl py-5 page-header position-relative mb-5">
+            <div class="container py-5">
+                <h1 class="display-2 text-white animated slideInDown mb-4">Krujoklar</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Asosiy sahifa</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Krujoklar</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+
+        <!-- Classes Start -->
+        <div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Krujoklar va mashg'ulotlar</h1>
+            <p>Biz bolalarga o'z qobiliyatlarini, ijodiy salohiyatini va jismoniy shaklini rivojlantirish uchun keng tanlovdagi krujoklarni taklif etamiz. Har bir krujok bolalarning barcha jihatdan rivojlanishini qo'llab-quvvatlashga qaratilgan.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/classes-1.jpg' %}" alt="Ingliz tili">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <h3 class="text-center mt-3 mb-4">Ingliz tili</h3>
+                        <p class="text-center">Ingliz tilini o'rganish uchun interaktiv va o'yin shaklida krujok. Bolalar yangi so'zlar, grammatika o'rganadilar va suhbatlashish amaliyotini bajaradilar.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/classes-2.jpg' %}" alt="San'at gimnastikasi">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <h3 class="text-center mt-3 mb-4">San'at gimnastikasi</h3>
+                        <p class="text-center">Bolalar giperekstremallik, chidamlilik va san'atni gimnastika va xoreografiya orqali rivojlantiradigan krujok.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/classes-3.jpg' %}" alt="Taekwondo">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <h3 class="text-center mt-3 mb-4">Taekwondo</h3>
+                        <p class="text-center">Jismoniy kuchni, tartibni va o'ziga bo'lgan ishonchni rivojlantirishga yo'naltirilgan jang san'ati mashg'ulotlari.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/classes-4.jpg' %}" alt="San'at studiyasi">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <h3 class="text-center mt-3 mb-4">San'at studiyasi</h3>
+                        <p class="text-center">Bolalar o'z ijodiy g'oyalarini chizish, qum shishasini yasash va boshqa san'at shakllari orqali amalga oshiradilar.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/classes-5.jpg' %}" alt="Musikiy mashg'ulotlar">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <h3 class="text-center mt-3 mb-4">Musikiy mashg'ulotlar</h3>
+                        <p class="text-center">Bolalar musiqa asboblarida o'ynashni, eshitish va ritm sezgirligini rivojlantiradilar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+</body>
+{% endblock %}
+</html>

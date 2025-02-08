@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block main %}
+<style>
+    .classes-item .bg-light {
+        height: 250px; /* Общая высота блока */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .classes-item h3 {
+        font-size: 20px;
+    }
+    .classes-item p {
+        font-size: 16px;
+    }
+    .classes-item img {
+    width: 280px; /* Задаем фиксированную ширину */
+    height: 230px; /* Задаем фиксированную высоту */
+    object-fit: cover; /* Изображение подгоняется под контейнер */
+    border-radius: 50%; /* Сохраняем круглую форму */
+}
+
+</style>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Page Header End -->
+        <div class="container-xxl py-5 page-header position-relative mb-5">
+            <div class="container py-5">
+                <h1 class="display-2 text-white animated slideInDown mb-4">Кружки</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная Страница</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Кружки</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+
+        <!-- Classes Start -->
+        <div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Кружки и занятия</h1>
+            <p>Мы предлагаем широкий выбор кружков, где дети могут развивать свои навыки, творческие способности и физическую форму. Каждый кружок направлен на всестороннее развитие и поддержку интересов ребенка.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/classes-1.jpg' %}" alt="Английский язык">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <h3 class="text-center mt-3 mb-4">Английский язык</h3>
+                        <p class="text-center">Кружок для изучения английского языка в интерактивной и игровой форме. Дети обучаются новым словам, грамматике и практикуют разговорную речь.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/classes-2.jpg' %}" alt="Художественная гимнастика">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <h3 class="text-center mt-3 mb-4">Художественная гимнастика</h3>
+                        <p class="text-center">Кружок, где дети развивают гибкость, выносливость и артистизм через занятия гимнастикой и хореографией.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/classes-3.jpg' %}" alt="Тхэквондо">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <h3 class="text-center mt-3 mb-4">Тхэквондо</h3>
+                        <p class="text-center">Занятия боевыми искусствами, направленные на развитие силы, дисциплины и уверенности в себе.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/classes-4.jpg' %}" alt="Арт-студия">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <h3 class="text-center mt-3 mb-4">Арт-студия</h3>
+                        <p class="text-center">Кружок, где дети могут реализовать свои творческие идеи через рисование, лепку и другие виды искусства.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="{% static 'img/classes-5.jpg' %}" alt="Музыкальные занятия">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <h3 class="text-center mt-3 mb-4">Музыкальные занятия</h3>
+                        <p class="text-center">Уроки музыки, где дети учатся играть на музыкальных инструментах, развивают слух и чувство ритма.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Classes End -->
+
+
+        <!-- Appointment Start -->
+<!--        <div class="container-xxl py-5">-->
+<!--            <div class="container">-->
+<!--                <div class="bg-light rounded">-->
+<!--                    <div class="row g-0">-->
+<!--                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">-->
+<!--                            <div class="h-100 d-flex flex-column justify-content-center p-5">-->
+<!--                                <h1 class="mb-4">Назначить встречу</h1>-->
+<!--                                <form>-->
+<!--                                    <div class="row g-3">-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="form-floating">-->
+<!--                                                <input type="text" class="form-control border-0" id="gname" placeholder="Имя Родителя">-->
+<!--                                                <label for="gname">Имя Родителя</label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="form-floating">-->
+<!--                                                <input type="email" class="form-control border-0" id="gmail" placeholder="Номер Родителя">-->
+<!--                                                <label for="gmail">Номер Родителя</label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="form-floating">-->
+<!--                                                <input type="text" class="form-control border-0" id="cname" placeholder="Имя Ребенка">-->
+<!--                                                <label for="cname">Имя Ребенка</label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <div class="form-floating">-->
+<!--                                                <input type="text" class="form-control border-0" id="cage" placeholder="Возраст Ребенка">-->
+<!--                                                <label for="cage">Возраст Ребенка</label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-12">-->
+<!--                                            <div class="form-floating">-->
+<!--                                                <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>-->
+<!--                                                <label for="message">Сообщение</label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-12">-->
+<!--                                            <button class="btn btn-primary w-100 py-3" type="submit">Отправить</button>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">-->
+<!--                            <div class="position-relative h-100">-->
+<!--                                <img class="position-absolute w-100 h-100 rounded" src="{% static 'img/appointment.jpg' %}" style="object-fit: cover;">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <!-- Appointment End -->
+
+
+        <!-- Testimonial Start -->
+<!--        <div class="container-xxl py-5">-->
+<!--            <div class="container">-->
+<!--                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">-->
+<!--                    <h1 class="mb-3">Our Clients Say!</h1>-->
+<!--                    <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>-->
+<!--                </div>-->
+<!--                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">-->
+<!--                    <div class="testimonial-item bg-light rounded p-5">-->
+<!--                        <p class="fs-5">Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>-->
+<!--                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">-->
+<!--                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 90px; height: 90px;">-->
+<!--                            <div class="ps-3">-->
+<!--                                <h3 class="mb-1">Client Name</h3>-->
+<!--                                <span>Profession</span>-->
+<!--                            </div>-->
+<!--                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="testimonial-item bg-light rounded p-5">-->
+<!--                        <p class="fs-5">Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>-->
+<!--                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">-->
+<!--                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" style="width: 90px; height: 90px;">-->
+<!--                            <div class="ps-3">-->
+<!--                                <h3 class="mb-1">Client Name</h3>-->
+<!--                                <span>Profession</span>-->
+<!--                            </div>-->
+<!--                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="testimonial-item bg-light rounded p-5">-->
+<!--                        <p class="fs-5">Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>-->
+<!--                        <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">-->
+<!--                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" style="width: 90px; height: 90px;">-->
+<!--                            <div class="ps-3">-->
+<!--                                <h3 class="mb-1">Client Name</h3>-->
+<!--                                <span>Profession</span>-->
+<!--                            </div>-->
+<!--                            <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <!-- Testimonial End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+</body>
+{% endblock %}
+</html>

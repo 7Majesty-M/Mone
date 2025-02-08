@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% block main %}
+<style>
+  /* Jadval uchun stil */
+  .schedule {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    table-layout: fixed; /* Ustun kengligini teng taqsimlashni ta'minlaydi */
+  }
+
+  /* Jadval sarlavhalari uchun stil */
+  .schedule th {
+    background-color: #FE5D37;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  /* Jadval hujayralari uchun stil */
+  .schedule td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    word-wrap: break-word; /* Uzoq so'zlarni yangi qatorda ko'rsatadi */
+  }
+
+  /* Har ikkala qator uchun fon rangi */
+  .schedule tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  /* Hover holatidagi qator uchun fon rangi */
+  .schedule tr:hover {
+    background-color: #ddd;
+  }
+
+  /* Birinchi ustun (vaqt) uchun stil */
+  .schedule td:first-child {
+    font-weight: bold;
+    background-color: #f4f4f4;
+  }
+
+  /* Mobil qurilmalar uchun moslashuvchanlik */
+  @media (max-width: 768px) {
+    .schedule td, .schedule th {
+      padding: 8px;
+      font-size: 12px;
+    }
+
+    /* Kichik ekranlarda jadvalni vertikal qilish */
+    .schedule thead {
+      display: none; /* Mobilda sarlavhalarni yashiradi */
+    }
+
+    .schedule tr {
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .schedule td {
+      display: block;
+      text-align: left;
+      padding-left: 50%; /* Belgilarga uchun ichki bo'shliq */
+      position: relative;
+    }
+
+    .schedule td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    /* Mobil qurilmalarda ajratgichlarni olib tashlash */
+    .schedule td:first-child {
+      background-color: transparent;
+      font-weight: normal;
+    }
+  }
+</style>
+
+<header>
+  <h1 style="text-align: center; color: #FE5D37;">Kundalik Rejim</h1>
+</header>
+<main>
+  <table class="schedule">
+    <thead>
+      <tr>
+        <th>Vaqt</th>
+        <th>Dushanba</th>
+        <th>Seshanba</th>
+        <th>Chorshanba</th>
+        <th>Payshanba</th>
+        <th>Juma</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Vaqt">08:00 - 09:00</td>
+        <td data-label="Dushanba">Nonushta</td>
+        <td data-label="Seshanba">Nonushta</td>
+        <td data-label="Chorshanba">Nonushta</td>
+        <td data-label="Payshanba">Nonushta</td>
+        <td data-label="Juma">Nonushta</td>
+      </tr>
+      <tr>
+        <td data-label="Vaqt">09:00 - 10:00</td>
+        <td data-label="Dushanba">Tajribali o'yinlar</td>
+        <td data-label="Seshanba">Ijodkorlik</td>
+        <td data-label="Chorshanba">Sport o'yinlari</td>
+        <td data-label="Payshanba">Tajribali o'yinlar</td>
+        <td data-label="Juma">Ijodkorlik</td>
+      </tr>
+      <tr>
+        <td data-label="Vaqt">10:00 - 11:00</td>
+        <td data-label="Dushanba">Ko'chada sayr qilish</td>
+        <td data-label="Seshanba">Ko'chada sayr qilish</td>
+        <td data-label="Chorshanba">Ko'chada sayr qilish</td>
+        <td data-label="Payshanba">Ko'chada sayr qilish</td>
+        <td data-label="Juma">Ko'chada sayr qilish</td>
+      </tr>
+      <tr>
+        <td data-label="Vaqt">11:00 - 12:00</td>
+        <td data-label="Dushanba">Kitob o'qish</td>
+        <td data-label="Seshanba">Kitob o'qish</td>
+        <td data-label="Chorshanba">Kitob o'qish</td>
+        <td data-label="Payshanba">Kitob o'qish</td>
+        <td data-label="Juma">Kitob o'qish</td>
+      </tr>
+      <tr>
+        <td data-label="Vaqt">12:00 - 13:00</td>
+        <td data-label="Dushanba">Tushlik</td>
+        <td data-label="Seshanba">Tushlik</td>
+        <td data-label="Chorshanba">Tushlik</td>
+        <td data-label="Payshanba">Tushlik</td>
+        <td data-label="Juma">Tushlik</td>
+      </tr>
+      <tr>
+        <td data-label="Vaqt">13:00 - 15:00</td>
+        <td data-label="Dushanba">Tinchlik vaqti</td>
+        <td data-label="Seshanba">Tinchlik vaqti</td>
+        <td data-label="Chorshanba">Tinchlik vaqti</td>
+        <td data-label="Payshanba">Tinchlik vaqti</td>
+        <td data-label="Juma">Tinchlik vaqti</td>
+      </tr>
+      <tr>
+        <td data-label="Vaqt">15:00 - 16:00</td>
+        <td data-label="Dushanba">Kechki choy</td>
+        <td data-label="Seshanba">Kechki choy</td>
+        <td data-label="Chorshanba">Kechki choy</td>
+        <td data-label="Payshanba">Kechki choy</td>
+        <td data-label="Juma">Kechki choy</td>
+      </tr>
+      <tr>
+        <td data-label="Vaqt">16:00 - 17:00</td>
+        <td data-label="Dushanba">Havoda o'yinlar</td>
+        <td data-label="Seshanba">Havoda o'yinlar</td>
+        <td data-label="Chorshanba">Havoda o'yinlar</td>
+        <td data-label="Payshanba">Havoda o'yinlar</td>
+        <td data-label="Juma">Havoda o'yinlar</td>
+      </tr>
+    </tbody>
+  </table>
+</main>
+{% endblock %}
